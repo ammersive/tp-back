@@ -1,3 +1,73 @@
+# Restful API: Save Our Play
+
+This is the API powering the Save Our Play web application, available [here](https://ammersive.github.io/save-our-play/), and see it’s repo [here](https://github.com/ammersive/save-our-play). Save our Play is a React-Redux web application built in accordance with a [brief](https://3.basecamp.com/4525821/buckets/18134884/documents/2886516324) to create a tool which randomly picks football teams, for the individual technical challenge set at the end of the DevelopMe Fellowship. 
+
+All requests should use the basename https://save-our-play.developme.space/api and be sent using JSON and with the Accept: application/json header.
+
+### `GET /players`
+
+Get all the players in the database.
+
+Response: returns a list of player objects wrapped in a "data" object *e.g:*
+
+     {
+        "data": [
+            {
+                "id": 1,
+                "name": "Jenny",
+                "play_count": 7
+            },
+            {
+                "id": 2,
+                "name": "Sanjeev",
+                "play_count": 6
+            },
+            {
+                "id": 7,
+                "name": "Leandro",
+                "play_count": 3
+            }
+         ]   
+    }
+
+### `POST /players`
+
+Add new players to the database
+
+Request format: player objects must be in a list. One or more players may be sent in a single request. Player objects comprise:
+
+- name (string)
+- playcount (integer)
+
+*e.g.:*
+
+    [
+      {
+         name: Lucy,
+         play_count: 1,
+      },
+      {
+         name: Jay,
+         play_count: 1,
+       }
+    ]
+
+### `PUT /players`
+
+Increment the play_count of existing players by 1
+
+Request format: player id(s), must be in a list. One or more ids may be sent in a single request.
+
+*e.g.:* 
+
+`[1, 4, 19, 21, 33, 2, 5, 17 6, 7]`
+
+### `DELETE /players/{id}`
+
+Remove existing player from the database, no request body required.
+
+# Laravel Documentation
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
